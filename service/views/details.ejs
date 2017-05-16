@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title><%=book_name%></title>
+</head>
+<style type="text/css">
+	body{
+			background-color:#F0F8FF;
+			font-size:150%;
+			font-family:"YouYuan";
+	}
+	A{
+		text-decoration: none;
+		color:#696969;	
+	}
+	#root{
+		width:100%;
+		height:100%;
+	}
+	#container{
+			margin:10px;
+			padding:30px;
+			background-color: #DDDDDD;
+			float:left;
+			display: block;
+			border:2px solid;
+			border-radius:5px;
+	}
+	#container a{
+			width:50%;
+			float:left;
+			display: block;
+			margin-top: 10px;
+	}
+	#panel{
+		background-color: #F0F8FF;
+		width:80%;
+		height: 120px;
+		border-style: solid;
+		border-color: #708090; 
+		border:2px solid;
+		border-radius:5px;
+	}
+	#panel ul{
+		margin: 5px;
+	}
+	#panel button{
+		border:2px solid;
+		border-radius:5px;
+		margin-left: 40px;
+		margin-top: 10px;
+	}
+</style>
+<body>
+	<div id="root">
+		<div id="container">
+			<div id="panel">
+				<button id="jixuyuedu" style="display: none" onclick="Jump()">继续阅读</button>
+				<ul>书名      <%=book_name%></ul>
+				<ul><%=book_author%></ul>
+			</div>
+			<ul>
+				<%book_chapter.forEach(function(i){%>
+					<a href="/read?user_name=<%=user_name%>&book_id=<%=book_id%>&chapter_id=<%=i.chapter_id%>"><li><%=i.chapter_name%></li></a>
+				<%})%>
+			</ul>
+		</div>
+	</div>
+	<script type="text/javascript">
+	var str=localStorage.books
+	var arr
+	if(str==null){
+		arr=[]
+	}else{
+		arr=JSON.parse(str)
+	}
+	for(var i=0;i<arr.length;i++){
+		if(arr[i].b_id==<%=book_id%>){
+			document.getElementById("jixuyuedu").style.display="block";
+			window.book=arr[i];
+		}
+	}
+	function Jump(){
+		window.location.href='/read?book_id='+window.book.b_id+'&chapter_id='+window.book.c_id;
+	}
+	</script>
+</body>
+</html>
+
+

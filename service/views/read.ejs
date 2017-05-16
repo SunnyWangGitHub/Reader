@@ -1,0 +1,65 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正在阅读</title>
+	<style type="text/css">
+		body{
+			background-color:#F0F8FF;
+
+		}
+		#container{
+			background-color: #DDDDDD;
+			padding: 2px;
+			margin: 5px;
+			font-size:200%;
+			font-family:"YouYuan";
+			border:2px solid;
+			border-radius:5px;
+		}
+		A{
+			text-decoration: none;
+			color:#696969;	
+		}
+		#panel{
+			width:50%;
+			border-style: solid;
+			border-color: #778899;
+			border-radius:5px;
+			position: absolute;
+			left:20%; 
+			background-color: #DCDCDC;
+		}
+		#panel button{
+			border:2px solid;
+			border-radius:5px;
+			margin-left: 40px;	
+		}
+	</style>
+</head>
+<body>
+	<div id="container"><%-data%></div>
+
+
+	<script type="text/javascript">
+		function nextChapter(){
+			var url=window.location.href;
+			var url1=url.substring(0,url.lastIndexOf('=')+1);
+			var chapter_id = url.substring(url.lastIndexOf('=')+1, url.length);
+			chapter_id++;
+			window.location.href=url1.concat(chapter_id);
+		}
+		function perChapter(){
+			var url=window.location.href;
+			var url1=url.substring(0,url.lastIndexOf('=')+1);
+			var chapter_id = url.substring(url.lastIndexOf('=')+1, url.length);
+			chapter_id--;
+			window.location.href=url1.concat(chapter_id);
+		}
+
+
+
+
+	</script>
+</body>
+</html>

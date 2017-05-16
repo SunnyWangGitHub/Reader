@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>iinovels.cn</title>
+	<style type="text/css">
+		body{
+			background-color:#F0F8FF;
+			font-family:"YouYuan";
+		}
+		A{
+			text-decoration: none;
+			color:#696969;	
+		}
+		#root{
+			width:100%;
+			height:100%;
+		}
+		#container{
+			margin:10px;
+			padding:30px;
+			background-color: #DDDDDD;
+			float:left;
+			display: block;
+			border:2px solid;
+			border-radius:5px;
+
+		}
+		#container a{
+			width:50%;
+			float:left;
+			display: block;
+		}
+		#bookshelf{
+			margin:10px; 
+			width:160px;
+			height:35px;
+			padding-left: 65px;
+			font-family:"STKaiti";
+			font-size: 200%;
+			background-color: #ADD8E6;
+			border:2px solid;
+			border-radius:5px;
+		}
+		#panel{
+			width: 30%;
+			height: 40px;
+			font-family:"STKaiti";
+			font-size: 170%;
+			background-color: #ADD8E6;
+			border:2px solid;
+			border-radius:5px;
+			margin-left: 35%;
+		}
+		#panel a{
+		padding-right: 10px;
+		padding-left: 55px;				
+		}
+	</style>
+</head>
+<body>
+	<div id="root">
+<!-- 		<div id="form">
+			<form action='/' method='post'>
+				<p>用户名：<input type='text' name='username' value='Sunny'></p>
+				<p>密码：<input type='text' name='password' value='123'></p>
+				<p><input type='submit' value='登入'></p>  
+			</form>
+		</div> -->
+		<div id="panel">
+			<a href="/login">登入</a>
+			<a href="/register">注册</a>
+		</div>
+
+<!-- 		<div id="bookshelf" style="display: none">
+			<a href="/bookshelf">书架</a>
+		</div> -->
+		<ul id="container">
+			<%books.forEach(function(book){%>
+			
+				<a href="/details?book_id=<%=book.book_id%>"><li style="text-decoration:none"><%=book.book_name%></li></a>
+		
+			<%})%>
+						<%books.forEach(function(book){%>
+			
+				<a href="/details?book_id=<%=book.book_id%>"><li style="text-decoration:none"><%=book.book_name%></li></a>
+		
+			<%})%>
+						<%books.forEach(function(book){%>
+			
+				<a href="/details?book_id=<%=book.book_id%>"><li style="text-decoration:none"><%=book.book_name%></li></a>
+		
+			<%})%>
+						<%books.forEach(function(book){%>
+			
+				<a href="/details?book_id=<%=book.book_id%>"><li style="text-decoration:none"><%=book.book_name%></li></a>
+		
+			<%})%>
+						<%books.forEach(function(book){%>
+			
+				<a href="/details?book_id=<%=book.book_id%>"><li style="text-decoration:none"><%=book.book_name%></li></a>
+		
+			<%})%>
+						<%books.forEach(function(book){%>
+			
+				<a href="/details?book_id=<%=book.book_id%>"><li style="text-decoration:none"><%=book.book_name%></li></a>
+		
+			<%})%>
+						<%books.forEach(function(book){%>
+			
+				<a href="/details?book_id=<%=book.book_id%>"><li style="text-decoration:none"><%=book.book_name%></li></a>
+		
+			<%})%>
+						<%books.forEach(function(book){%>
+			
+				<a href="/details?book_id=<%=book.book_id%>"><li style="text-decoration:none"><%=book.book_name%></li></a>
+		
+			<%})%>
+						<%books.forEach(function(book){%>
+			
+				<a href="/details?book_id=<%=book.book_id%>"><li style="text-decoration:none"><%=book.book_name%></li></a>
+		
+			<%})%>
+						<%books.forEach(function(book){%>
+			
+				<a href="/details?book_id=<%=book.book_id%>"><li style="text-decoration:none"><%=book.book_name%></li></a>
+		
+			<%})%>
+						<%books.forEach(function(book){%>
+			
+				<a href="/details?book_id=<%=book.book_id%>"><li style="text-decoration:none"><%=book.book_name%></li></a>
+		
+			<%})%>
+						<%books.forEach(function(book){%>
+			
+				<a href="/details?book_id=<%=book.book_id%>"><li style="text-decoration:none"><%=book.book_name%></li></a>
+		
+			<%})%>
+						<%books.forEach(function(book){%>
+			
+				<a href="/details?book_id=<%=book.book_id%>"><li style="text-decoration:none"><%=book.book_name%></li></a>
+		
+			<%})%>
+						<%books.forEach(function(book){%>
+			
+				<a href="/details?book_id=<%=book.book_id%>"><li style="text-decoration:none"><%=book.book_name%></li></a>
+		
+			<%})%>
+						<%books.forEach(function(book){%>
+			
+				<a href="/details?book_id=<%=book.book_id%>"><li style="text-decoration:none"><%=book.book_name%></li></a>
+		
+			<%})%>
+
+		</ul>
+	</div>
+	<script type="text/javascript">
+		// var str=localStorage.books
+		// var arr
+		// if(str==null){
+		// 	arr=[]
+		// }else{
+		// 	arr=JSON.parse(str)
+		// 	document.getElementById("bookshelf").style.display="block";
+		// }
+	</script>	
+</body>
+</html>
+
+

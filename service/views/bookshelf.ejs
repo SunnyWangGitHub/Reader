@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title><%=user_name%> 的书架</title>
+	<style type="text/css">
+		body{
+			background-color:#F0F8FF;
+
+		}
+		A{
+			text-decoration: none;
+			color:#696969;	
+		}
+
+		#root{
+			width:100%;
+			height:100%;
+		}
+		#container{
+			margin:10px;
+			padding:30px;
+			background-color: #DDDDDD;
+		}
+		#container li{
+			padding-bottom: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div id="root">
+		<div id="container">
+			<ul>
+			    <% for(var i=0; i<alreadyread.length; i++) { %>
+			    	<li>
+			    		<a href="/read?user_name=<%=user_name%>&book_id=<%=alreadyread[i].book_id %>&chapter_id=<%=alreadyread[i].chapter_id%>"><%=alreadyread[i].book_name%></a>
+			    	</li>
+			    <% } %>
+			</ul>
+
+		</div>
+	</div>
+	<script type="text/javascript">
+	</script>
+</body>
+</html>

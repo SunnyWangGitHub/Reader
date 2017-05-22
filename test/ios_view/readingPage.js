@@ -2,7 +2,7 @@
 * @Author: SunnyWangGitHub
 * @Date:   2017-05-06 14:01:19
 * @Last Modified by:   SunnyWangGitHub
-* @Last Modified time: 2017-05-15 17:03:26
+* @Last Modified time: 2017-05-21 20:37:18
 */
 
 'use strict';
@@ -18,6 +18,7 @@ import {
   ScrollView,
   TouchableOpacity,
   Image,
+  AsyncStorage,
 } from 'react-native';
 
 import Util from './util';
@@ -45,7 +46,7 @@ class readingPage extends Component{
 			{
 				this.state.isShow?
 				<View style={style.container}>
-					<ScrollView style={style.scroll}>
+					<ScrollView style={style.scroll} ref='totop' >
 						<Text style={style.content}>{this.state.chapter_content}</Text>
 						<View style={style.panel}>
 							<TouchableOpacity style={style.pre} onPress={this.prePage.bind(this,this.state.book_id,this.state.chapter_id)}>
@@ -104,7 +105,10 @@ class readingPage extends Component{
 		},function(err){
 			alert(err);
 		});
-		this._scrollView.scrollTo(0, 0);		
+		this.getPrevious();
+		this.saveDate(book_id,chapter_id);	
+		// this.getValue(book_id);
+
 	}
 
 	prePage(book_id,chapter_id){
@@ -124,12 +128,50 @@ class readingPage extends Component{
 			}
 		},function(err){
 			alert(err);
-		});		
+		});
+		this.getPrevious();
+		this.saveDate(book_id,chapter_id);			
 	}
 
 	listPage(book_id,chapter_id){
 		this.props.navigator.pop();	
 	}
+	getPrevious(){
+		this.refs.totop.scrollTo({x:0,y: 0,animated:true});
+	}
+	saveDate(book_id,chapter_id){
+        try {
+            AsyncStorage.setItem(
+                book_id.toString(),
+                chapter_id.toString(),
+                (error)=>{
+                    if (error){
+                        alert('书签保存失败:',error);
+                    }else{
+                        // alert('存值成功!');
+                    }
+                }
+            );
+        } catch (error){
+            alert('失败'+error);
+        }
+
+	}
+	// SSS(book_id){
+ //        try {
+ //            AsyncStorage.clear(
+ //                (error)=>{
+ //                    if (error){
+ //                        alert('取值失败:'+error);
+ //                    }else{
+ //                    	alert('shanchuchenggou');
+ //                    }
+ //                }
+ //            )
+ //        }catch(error){
+ //            alert('失败'+error);
+ //        }
+	// }
 
 }
 
@@ -141,7 +183,6 @@ var style=StyleSheet.create({
 	container:{
 		flex:1,
 		backgroundColor:'#FFF8DC',
-		marginTop:25,
 	},
 	scroll:{
 		flex:1,
@@ -153,7 +194,8 @@ var style=StyleSheet.create({
 		marginLeft:5,
 		marginRight:5,
 		padding:2,
-		fontSize:15,
+		fontSize:20,
+		fontFamily:'Times',
 		borderRadius:3,
 	},
 	panel:{		

@@ -2,7 +2,7 @@
 * @Author: SunnyWangGitHub
 * @Date:   2017-05-12 18:42:07
 * @Last Modified by:   SunnyWangGitHub
-* @Last Modified time: 2017-05-14 22:24:01
+* @Last Modified time: 2017-05-20 15:38:00
 */
 
 'use strict';
@@ -16,7 +16,7 @@ import {
   Text,
   View,
   ListView,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
 
 import Util from './util';
@@ -46,7 +46,7 @@ class detailsPage extends Component{
 				      dataSource={this.state.dataSource}
 				      renderRow={(rowData) =>(
 				      	<TouchableOpacity  style={style.item} 
-				      	 onPress={this._goToDetailPage.bind(this,this.state.book_id,rowData.chapter_id)}
+				      	 onPress={this._goToReadingPage.bind(this,this.state.book_id,rowData.chapter_id)}
 				      	>
 				      		<View style={style.chapter_id}>
 				      			<Text>{rowData.chapter_id}</Text>
@@ -82,18 +82,14 @@ class detailsPage extends Component{
 			alert(err);
 		});
 	}
-	_goToDetailPage(book_id,chapter_id){
+	_goToReadingPage(book_id,chapter_id){
 	  this.props.navigator.push({
 	    component:ReadingPage,
-	    rightButtonTitle: '加入书架',
-	    onRightButtonPress: function(){
-	        alert('加入书架成功');
-	    },
+	    navigationBarHidden:true,
 	    passProps:{
 	    	book_id:book_id,
 	    	chapter_id:chapter_id,
-	    }
-
+	    },
 	  });
 	}
 
@@ -103,7 +99,7 @@ var style=StyleSheet.create({
 	container:{
 		flex:1,
 		backgroundColor:'#E0E0E0',
-		marginTop:60
+		marginTop:60,
 	},
 	item:{
 		flexDirection:'row',

@@ -2,7 +2,7 @@
 // * @Author: SunnyWangGitHub
 // * @Date:   2017-03-29 22:40:00
 // * @Last Modified by:   SunnyWangGitHub
-// * @Last Modified time: 2017-05-13 20:37:10
+// * @Last Modified time: 2017-05-20 11:24:22
 // */
 
 // 'use strict';
@@ -320,6 +320,7 @@ app.get("/details",function(req,res){
 	});
 });
 
+
 app.get("/read",function(req,res){
 	var Book_id=req.query.book_id;
 	var Chapter_id=req.query.chapter_id;
@@ -339,6 +340,24 @@ app.get("/read",function(req,res){
 
 	});
 
+});
+
+//=========================================
+app.get("/shelf",function(req,res){
+	var Book_id=req.query.book_id;
+	MongoClient.connect(url, function(err, db) {
+		var collection = db.collection('books');
+		collection.find({book_id:parseInt(Book_id)}).toArray(function(err,data){
+			if(err){
+				console.log(err);
+			}else{
+				res.send({
+					status:1,
+					data:data,				
+				})
+			}
+		});
+	});
 });
 
 app.listen(3001);
